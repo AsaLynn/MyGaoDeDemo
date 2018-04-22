@@ -2,6 +2,60 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zxn.gaode">
 
+    <!-- 地图包、搜索包需要的基础权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 允许程序设置内置sd卡的写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 允许程序读写手机状态和身份 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--定位包、导航包需要的额外权限（注：基础权限也需要）-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- Normal Permissions 不需要运行时注册 -->
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+
+
+    <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!-- 需要运行时注册的权限 -->
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 用于提高GPS定位速度 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 读取缓存数据 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <!-- 更改设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+    <!-- 3.2.0版本增加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- 3.2.0版本增加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +63,362 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.activity.EnterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.MyMapActivity" />
+        <activity android:name=".mapdemo.MainActivity" />
+
+        <activity
+            android:name=".mapdemo.basic.BasicMapActivity"
+            android:label="@string/basic_map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.TextureMapViewActivity"
+            android:label="@string/basic_texturemapview"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.ViewPagerWithMapActivity"
+            android:label="@string/viewpager_map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.BaseMapSupportFragmentActivity"
+            android:label="@string/basic_map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.map.BaseMapFragmentActivity"
+            android:label="@string/basic_map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.map.MapImpMethodActivity"
+            android:label="@string/basic_map"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.basic.map.BaseTextureMapFragmentActivity"
+            android:label="@string/basic_map"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.basic.map.BaseTextureSupportMapFragmentActivity"
+            android:label="@string/basic_map"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.basic.Animate_CameraActivity"
+            android:label="@string/camera_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.HeatMapActivity"
+            android:label="@string/heatmap_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.EventsActivity"
+            android:label="@string/events_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.LayersActivity"
+            android:label="@string/layers_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.PoiClickActivity"
+            android:label="@string/poiclick_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.MapOptionActivity"
+            android:label="@string/mapOption_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.ScreenShotActivity"
+            android:label="@string/screenshot_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.MinMaxZoomLevelActivity"
+            android:label="@string/set_min_max_zoomlevel"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.basic.LimitBoundsActivity"
+            android:label="@string/limit_bounds"
+            android:screenOrientation="portrait" />
+        <!--com.zxn.gaode.mapdemo.opengl.OpenglActivity-->
+        <activity
+            android:name="mapdemo.opengl.OpenglActivity"
+            android:label="@string/opengl_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.UiSettingsActivity"
+            android:label="@string/uisettings_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.MarkerActivity"
+            android:label="@string/marker_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.MarkerAnimationActivity"
+            android:label="@string/marker_animation_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.PolylineActivity"
+            android:label="@string/polyline_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.ArcActivity"
+            android:label="@string/arc_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.GroundOverlayActivity"
+            android:label="@string/groundoverlay_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.PolygonActivity"
+            android:label="@string/polygon_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.CircleActivity"
+            android:label="@string/circle_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.NavigateArrowOverlayActivity"
+            android:label="@string/navigatearrow_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.MultiPointOverlayActivity"
+            android:label="@string/multipoint_demo"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.location.LocationModeSourceActivity_Old"
+            android:label="@string/locationmodesource_demo_old"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.location.LocationModeSourceActivity"
+            android:label="@string/locationmodesource_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.location.CustomLocationModeActivity"
+            android:label="@string/locationmodesource_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.geocoder.GeocoderActivity"
+            android:label="@string/geocoder_demo"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.route.RouteActivity"
+            android:label="@string/route_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.busline.BuslineActivity"
+            android:label="@string/busline_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.poisearch.PoiKeywordSearchActivity"
+            android:label="@string/poikeywordsearch_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.poisearch.PoiAroundSearchActivity"
+            android:label="@string/poiaroundsearch_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.poisearch.PoiIDSearchActivity"
+            android:label="@string/poiidsearch_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.offlinemap.OfflineMapActivity_Old"
+            android:label="@string/offlinemap_demo"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.amap.api.maps.offlinemap.OfflineMapActivity"
+            android:label="@string/offlinemap_ui_demo"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".mapdemo.district.DistrictActivity"
+            android:label="@string/district_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.district.DistrictWithBoundaryActivity"
+            android:label="@string/district_boundary_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.cloud.CloudActivity"
+            android:label="@string/cloud_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.cloud.CloudDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.cloud.PreviewPhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.share.ShareActivity"
+            android:label="@string/share_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.weather.WeatherSearchActivity"
+            android:label="@string/weather_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.poisearch.SubPoiSearchActivity"
+            android:label="@string/subpoi_demo"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".mapdemo.route.DriveRouteDetailActivity"
+            android:label="@string/route_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.WalkRouteDetailActivity"
+            android:label="@string/route_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.BusRouteDetailActivity"
+            android:label="@string/route_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.indoor.IndoorMapActivity"
+            android:label="@string/indoormap_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.TwoMapActivity"
+            android:label="@string/multi_inst"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.LogoSettingsActivity"
+            android:label="@string/logo_position"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.GestureSettingsActivity"
+            android:label="@string/gesture"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.inputtip.InputtipsActivity"
+            android:label="@string/inputtips_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.GeodesicActivity"
+            android:label="@string/inputtips_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.ColourfulPolylineActivity"
+            android:label="@string/colourline_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.geocoder.ReGeocoderActivity"
+            android:label="@string/regeocoder_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.CameraActivity"
+            android:label="@string/animate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.basic.ZoomActivity"
+            android:label="@string/map_zoom"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.CustomMarkerActivity"
+            android:label="@string/custommarker_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.MarkerClickActivity"
+            android:label="@string/marker_click"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.DriveRouteActivity"
+            android:label="@string/route_drive"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.BusRouteActivity"
+            android:label="@string/route_bus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.WalkRouteActivity"
+            android:label="@string/route_walk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.busline.BusStationActivity"
+            android:label="@string/busstation_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.location.CustomLocationActivity"
+            android:label="@string/customlocation_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.InfoWindowActivity"
+            android:label="@string/infowindow_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.overlay.TileOverlayActivity"
+            android:label="@string/tileoverlay_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.tools.CoordConverActivity"
+            android:label="@string/coordconvert_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.tools.ContainsActivity"
+            android:label="@string/contains_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.tools.CalculateDistanceActivity"
+            android:label="@string/calculateLineDistance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.tools.GeoToScreenActivity"
+            android:label="@string/convertgeo2point_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.trace.TraceActivity"
+            android:label="@string/trace_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.trace.TraceActivity_Simple"
+            android:label="@string/trace_demo_simple"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.routepoi.RoutePOIActivity"
+            android:label="@string/routepoisearch_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.RideRouteActivity"
+            android:label="@string/route_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.TruckRouteActivity"
+            android:label="@string/route_truck"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.RouteDistanceActivity"
+            android:label="@string/route_distance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.route.RideRouteDetailActivity"
+            android:label="@string/route_ride"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapdemo.smooth.SmoothMoveActivity"
+            android:label="@string/smooth_move_demo"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mapdemo.overlay.HoleActivity"
+            android:label="@string/hole_title"
+            android:screenOrientation="portrait" />
+
+
+        <!-- 高德地图 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="a7c962c0cc8fc4f1ff4228b415083578" />
+        <!-- 高德地图 -->
     </application>
 
 </manifest>
